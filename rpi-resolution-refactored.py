@@ -35,7 +35,7 @@ def get_resolution(screen):
 	try:
 		res = int(res)
 	except ValueError:
-		print('Please enter a whole number.')
+		print('\nPlease enter a whole number.\n')
 		return get_resolution(screen)
 
 	modes = range(1, TV_MODES + 1) if screen is 't' else range(1, MON_MODES + 1)
@@ -43,7 +43,7 @@ def get_resolution(screen):
 	if res in modes:
 		return res
 	else:
-		print('No such resolution.')
+		print('\nNo such resolution.\n')
 		return get_resolution(screen)
 
 
@@ -58,7 +58,7 @@ def get_screen():
 		return screen
 	else:
 
-		print('No such screen type.')
+		print('\nNo such screen type.\n')
 		return get_screen()
 
 
@@ -76,12 +76,14 @@ def resolution():
 
 	"""Alters the resolution of the display based on user choice."""
 
-	current_res = subprocess.call(['tvservice', '-s'])
-	print('Your current resolution is: {}\n'.format(current_res))
+	# current_res = subprocess.call(['tvservice', '-s'])
+	# print('Your current resolution is: {}\n'.format(current_res))
 
 	screen = get_screen()
 	print_resolutions(screen)
-	res = get_resolution()
+	res = get_resolution(screen)
+
+	print(res)
 
 
 def perform_action(option):
