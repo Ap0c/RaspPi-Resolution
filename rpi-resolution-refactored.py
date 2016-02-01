@@ -1,9 +1,18 @@
 # ----- Imports ----- #
 
-# import subprocess
+import subprocess
 
 
 # ----- Functions ----- #
+
+def save_restart():
+
+	"""Restarts the pi."""
+
+	print('Rebooting...')
+
+	subprocess.call(["reboot"])
+
 
 def perform_action(option):
 
@@ -16,7 +25,7 @@ def perform_action(option):
 		# overscan()
 		pass
 	elif option == 's':
-		# restart()
+		# save_restart()
 		pass
 	elif option == 'q':
 		pass
