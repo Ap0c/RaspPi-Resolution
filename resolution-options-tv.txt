@@ -1,0 +1,65 @@
+The possible display resolutions can be seen below:
+
+	H means 16:9 variant (of a normally 4:3 mode).
+	2x means pixel doubled (i.e. higher clock rate, with each pixel repeated twice)
+	4x means pixel quadrupled (i.e. higher clock rate, with each pixel repeated four times)
+
+hdmi_mode=1    VGA
+hdmi_mode=2    480p  60Hz
+hdmi_mode=3    480p  60Hz  H
+hdmi_mode=4    720p  60Hz
+hdmi_mode=5    1080i 60Hz
+hdmi_mode=6    480i  60Hz
+hdmi_mode=7    480i  60Hz  H
+hdmi_mode=8    240p  60Hz
+hdmi_mode=9    240p  60Hz  H
+hdmi_mode=10   480i  60Hz  4x
+hdmi_mode=11   480i  60Hz  4x H
+hdmi_mode=12   240p  60Hz  4x
+hdmi_mode=13   240p  60Hz  4x H
+hdmi_mode=14   480p  60Hz  2x
+hdmi_mode=15   480p  60Hz  2x H
+hdmi_mode=16   1080p 60Hz
+hdmi_mode=17   576p  50Hz
+hdmi_mode=18   576p  50Hz  H
+hdmi_mode=19   720p  50Hz
+hdmi_mode=20   1080i 50Hz
+hdmi_mode=21   576i  50Hz
+hdmi_mode=22   576i  50Hz  H
+hdmi_mode=23   288p  50Hz
+hdmi_mode=24   288p  50Hz  H
+hdmi_mode=25   576i  50Hz  4x
+hdmi_mode=26   576i  50Hz  4x H
+hdmi_mode=27   288p  50Hz  4x
+hdmi_mode=28   288p  50Hz  4x H
+hdmi_mode=29   576p  50Hz  2x
+hdmi_mode=30   576p  50Hz  2x H
+hdmi_mode=31   1080p 50Hz
+hdmi_mode=32   1080p 24Hz
+hdmi_mode=33   1080p 25Hz
+hdmi_mode=34   1080p 30Hz
+hdmi_mode=35   480p  60Hz  4x
+hdmi_mode=36   480p  60Hz  4xH
+hdmi_mode=37   576p  50Hz  4x
+hdmi_mode=38   576p  50Hz  4x H
+hdmi_mode=39   1080i 50Hz  reduced blanking
+hdmi_mode=40   1080i 100Hz
+hdmi_mode=41   720p  100Hz
+hdmi_mode=42   576p  100Hz
+hdmi_mode=43   576p  100Hz H
+hdmi_mode=44   576i  100Hz
+hdmi_mode=45   576i  100Hz H
+hdmi_mode=46   1080i 120Hz
+hdmi_mode=47   720p  120Hz
+hdmi_mode=48   480p  120Hz
+hdmi_mode=49   480p  120Hz H
+hdmi_mode=50   480i  120Hz
+hdmi_mode=51   480i  120Hz H
+hdmi_mode=52   576p  200Hz
+hdmi_mode=53   576p  200Hz H
+hdmi_mode=54   576i  200Hz
+hdmi_mode=55   576i  200Hz H
+hdmi_mode=56   480p  240Hz
+hdmi_mode=57   480p  240Hz H
+hdmi_mode=58   480i  240Hz
+hdmi_mode=59   480i  240Hz H
