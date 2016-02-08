@@ -5,6 +5,15 @@ A command line Python program to alter the resolution of the Raspberry Pi. Can b
 
 WARNING: This script will modify your boot config file, meaning that if something goes wrong your Pi may become unbootable and require a reflash of the SD card.
 
+To Run
+======
+
+```
+sudo python3 rpi-resolution.py
+```
+
+Note: superuser privileges are required because this script edits the `/boot/config.txt` file.
+
 Why?
 ====
 
