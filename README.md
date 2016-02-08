@@ -3,6 +3,8 @@ RaspPi-Resolution
 
 A command line Python program to alter the resolution of the Raspberry Pi. Can be used to change the resolution and overscan settings.
 
+WARNING: This script will modify your boot config file, meaning that if something goes wrong your Pi may become unbootable and require a reflash of the SD card.
+
 Why?
 ====
 
