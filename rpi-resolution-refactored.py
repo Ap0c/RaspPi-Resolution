@@ -13,6 +13,9 @@ RES_FILES = {
 TV_MODES = 59
 MON_MODES = 86
 
+# CFG_FILE = '/boot/config.txt'
+CFG_FILE = './test_config.txt'
+
 
 # ----- Functions ----- #
 
@@ -23,6 +26,38 @@ def save_restart():
 	print('Rebooting...')
 
 	subprocess.call(["reboot"])
+
+
+def update_param(cfg, param, value):
+
+	"""If parameter already exists in config file, update it, else, append."""
+
+	updated = False
+
+	for line_no, line in enumerate(cfg):
+
+		if param in line:
+
+			cfg[line_no] = '{}={}'.format(param, value)
+			updated = True
+
+	if not updated:
+		cfg.append('{}={}'.format(param, value))
+
+	return cfg
+
+
+def update_config(param, value):
+
+	"""Updates the config file with new value for parameter."""
+
+	with open(CFG_FILE, 'r') as cfg_in:
+		cfg = cfg_in.readlines()
+
+	cfg = update_param(cfg, param, value)
+
+	with open(CFG_FILE, 'w') as cfg_out:
+		cfg_out.writelines(cfg)
 
 
 def get_resolution(screen):
@@ -83,7 +118,7 @@ def resolution():
 	print_resolutions(screen)
 	res = get_resolution(screen)
 
-	print(res)
+	update_config('hdmi_mode', res)
 
 
 def perform_action(option):
