@@ -191,7 +191,7 @@ def modify_overscan(edge):
 
 	"""Asks user if they want to modify an overscan value."""
 
-	change = input('Change your {} overscan (y/n)? '.format(edge['name']))
+	change = input('\nChange your {} overscan (y/n)? '.format(edge['name']))
 
 	if change == 'y':
 		return overscan_value()
@@ -236,9 +236,6 @@ def perform_action(option):
 		resolution()
 	elif option == 'o':
 		overscan()
-	elif option == 's':
-		# save_restart()
-		return 'success'
 	elif option == 'q':
 		return 'success'
 	else:
@@ -252,7 +249,7 @@ def user_input():
 
 	"""Asks the user what they wish to do, then performs that action."""
 
-	print('Welcome to rpi-resolution.\n',
+	print('\nWelcome to rpi-resolution.\n',
 		"'r' - change resolution",
 		"'o' - change overscan",
 		"'s' - save and restart",
@@ -260,14 +257,17 @@ def user_input():
 
 	choice = input('What would you like to do: ')
 
-	result = perform_action(choice)
-
-	if result != 'success':
-		print('Error: unrecognised option')
+	return perform_action(choice)
 
 
 # ----- Run ----- #
 
 if __name__ == '__main__':
 
-	user_input()
+	result = user_input()
+
+	if result != 'success':
+		print('Error: unrecognised option')
+
+	print('\nNote: You will need to reboot for any changes to take effect.',
+		'To reboot from the command line enter:\n  sudo reboot\n')
