@@ -18,6 +18,13 @@ HDMI_GROUPS = {
 TV_MODES = 59
 MON_MODES = 86
 
+OVERSCANS = [
+	{'name': 'top', 'param': 'overscan_top'},
+	{'name': 'bottom', 'param': 'overscan_bottom'},
+	{'name': 'left', 'param': 'overscan_left'},
+	{'name': 'right', 'param': 'overscan_right'}
+]
+
 # CFG_FILE = '/boot/config.txt'
 CFG_FILE = './test_config.txt'
 
@@ -163,11 +170,62 @@ def overscan_info():
 	print_overscan()
 
 
+def overscan_value():
+
+	"""Gets a new overscan value from the user."""
+
+	value = input('How much overscan? ')
+
+	try:
+
+		int(value)
+		return value
+
+	except ValueError:
+
+		print("Must be an interger.")
+		return overscan_value()
+
+
+def modify_overscan(edge):
+
+	"""Asks user if they want to modify an overscan value."""
+
+	change = input('Change your {} overscan (y/n)? '.format(edge['name']))
+
+	if change == 'y':
+		return overscan_value()
+	elif change == 'n':
+		return None
+	else:
+
+		print("Please type 'y' or 'n'.")
+		return modify_overscan(edge)
+
+
+def new_overscans():
+
+	"""Gets the user's new overscan values."""
+
+	overscans = {}
+
+	for edge in OVERSCANS:
+
+		value = modify_overscan(edge)
+
+		if value:
+			overscans[edge['param']] = value
+
+	if overscans:
+		update_config(overscans)
+
+
 def overscan():
 
 	"""Alters the overscan/underscan of the display."""
 
 	overscan_info()
+	new_overscans()
 
 
 def perform_action(option):
