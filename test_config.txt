@@ -1,1 +1,2 @@
 hdmi_mode=34
+hdmi_group=1

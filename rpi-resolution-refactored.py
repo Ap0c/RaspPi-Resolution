@@ -10,6 +10,11 @@ RES_FILES = {
 	'm': 'resolution-options-monitor.txt'
 }
 
+HDMI_GROUPS = {
+	't': 1,
+	'm': 2
+}
+
 TV_MODES = 59
 MON_MODES = 86
 
@@ -28,33 +33,35 @@ def save_restart():
 	subprocess.call(["reboot"])
 
 
-def update_param(cfg, param, value):
+def update_params(cfg, params):
 
-	"""If parameter already exists in config file, update it, else, append."""
+	"""Updates the parameters in the config file, and appends new ones."""
 
-	updated = False
+	to_update = list(params.keys())
 
 	for line_no, line in enumerate(cfg):
 
-		if param in line:
+		for param, value in params.items():
 
-			cfg[line_no] = '{}={}'.format(param, value)
-			updated = True
+			if param in line:
 
-	if not updated:
-		cfg.append('{}={}'.format(param, value))
+				cfg[line_no] = '{}={}\n'.format(param, value)
+				to_update.remove(param)
+
+	for param in to_update:
+		cfg.append('{}={}\n'.format(param, params[param]))
 
 	return cfg
 
 
-def update_config(param, value):
+def update_config(params):
 
-	"""Updates the config file with new value for parameter."""
+	"""Updates the config file with new parameters."""
 
 	with open(CFG_FILE, 'r') as cfg_in:
 		cfg = cfg_in.readlines()
 
-	cfg = update_param(cfg, param, value)
+	cfg = update_params(cfg, params)
 
 	with open(CFG_FILE, 'w') as cfg_out:
 		cfg_out.writelines(cfg)
@@ -118,7 +125,10 @@ def resolution():
 	print_resolutions(screen)
 	res = get_resolution(screen)
 
-	update_config('hdmi_mode', res)
+	update_config({
+		'hdmi_mode': res,
+		'hdmi_group': HDMI_GROUPS[screen]
+	})
 
 
 def perform_action(option):
