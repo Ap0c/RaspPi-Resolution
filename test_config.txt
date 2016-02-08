@@ -1,6 +1,0 @@
-hdmi_mode=43
-hdmi_group=1
-overscan_top=4
-overscan_bottom=23
-overscan_left=2
-overscan_right=-2
