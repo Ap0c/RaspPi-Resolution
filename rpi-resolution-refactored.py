@@ -131,6 +131,45 @@ def resolution():
 	})
 
 
+def print_overscan():
+
+	"""Prints current overscan settings."""
+
+	settings = {}
+
+	with open(CFG_FILE, 'r') as cfg:
+
+		for line in cfg:
+
+			if "overscan" in line:
+
+				param, value = line.split('=')
+				param = param[9:]
+				settings[param] = value.strip()
+
+	for setting, value in settings.items():
+		print(' - {} = {}'.format(setting, value))
+
+
+def overscan_info():
+
+	"""Prints some information about overscan."""
+
+	print('\nOverscan changes the size of the image on screen.',
+		'Positive numbers reduce the image size, increasing the black borders.',
+		'Negative numbers increase the image size, reducing the black borders.')
+
+	print('\nYour current overscan values are:')
+	print_overscan()
+
+
+def overscan():
+
+	"""Alters the overscan/underscan of the display."""
+
+	overscan_info()
+
+
 def perform_action(option):
 
 	"""Runs the option chosen by the user."""
@@ -138,8 +177,7 @@ def perform_action(option):
 	if option == 'r':
 		resolution()
 	elif option == 'o':
-		# overscan()
-		pass
+		overscan()
 	elif option == 's':
 		# save_restart()
 		pass
