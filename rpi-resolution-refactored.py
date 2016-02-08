@@ -238,12 +238,13 @@ def perform_action(option):
 		overscan()
 	elif option == 's':
 		# save_restart()
-		pass
+		return 'success'
 	elif option == 'q':
-		pass
+		return 'success'
 	else:
 		return 'fail'
 
+	user_input()
 	return 'success'
 
 
@@ -261,9 +262,7 @@ def user_input():
 
 	result = perform_action(choice)
 
-	if result == 'success':
-		print('Done.')
-	else:
+	if result != 'success':
 		print('Error: unrecognised option')
 
 
