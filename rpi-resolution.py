@@ -147,7 +147,7 @@ def print_overscan():
 
 		for line in cfg:
 
-			if "overscan" in line:
+			if "overscan" in line and '=' in line:
 
 				param, value = line.split('=')
 				param = param[9:]
